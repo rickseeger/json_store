@@ -21,6 +21,14 @@ class test_datastore(unittest.TestCase):
         sys.stderr.write('retrieved value: {}\n'.format(value2))
         self.assertEqual(value, value2)
 
+
+    def test_cache_miss_returns_none(self):
+        rand_value = str(random.random())
+        rand_key = hashlib.sha256(rand_value).hexdigest()
+        value = datastore.get_value(rand_key)
+        sys.stderr.write('get_value returned {} on cache-miss\n'.format(value))
+        self.assertIsNone(value)
+
     
 if __name__ == '__main__':
     unittest.main()
