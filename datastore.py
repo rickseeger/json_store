@@ -4,7 +4,7 @@
 
 import traceback, sys, os, hashlib, json
 
-data_path = '/srv'
+data_path = '/tmp'
 
 
 # retrieve data by its hash value, returns None if hash not found
