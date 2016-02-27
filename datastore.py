@@ -11,6 +11,9 @@ data_path = '/srv'
 def get_value(hashkey):
 
     value = ''  # return on cache-miss
+    if (hashkey is None):
+        return value
+
     path = data_path + '/' + hashkey
 
     if (os.path.isfile(path)):
@@ -46,7 +49,7 @@ def set_value(value):
             data_file.write(value)
 
     except IOError as e:
-        errinfo, traceback = sys.exc_info()
+        errtype, errinfo, traceback = sys.exc_info()
         sys.stderr.write('error: opening %s: %s' % (errinfo.filename, errinfo.strerror))
         return None
     
