@@ -22,7 +22,7 @@ class test_datastore(unittest.TestCase):
         rand_value = str(random.random())
         rand_key = hashlib.sha256(rand_value).hexdigest()
         value = datastore.get_value(rand_key)
-        self.assertIsEqual('')
+        self.assertEqual('')
 
     
     def test_write_hash_returned(self):

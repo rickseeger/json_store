@@ -14,7 +14,6 @@ def get_value(hashkey):
     path = data_path + '/' + hashkey
 
     if (os.path.isfile(path)):
-
         try:
             with open(path, 'r') as data_file:
                 value = data_file.read()
