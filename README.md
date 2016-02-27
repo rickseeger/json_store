@@ -1,20 +1,23 @@
 # json_store
 Stores a JSON object as an HTTP reference to it's hash
 
-## Run a datastore service
+## Server
 
 ### Dependencies
 
 > `$ sudo pip install flask`
 
+### Run json_store service
+
 ![Server](images/server.png "Server")
 
 
-## Connect to a datastore service
+## Client
 
 ### Dependencies
 
 > `$ sudo apt-get install curl`
 
-![Client](images/client.png "Client")
+### Connect to json_store service
 
+![Client](images/client.png "Client")
