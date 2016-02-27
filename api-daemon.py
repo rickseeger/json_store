@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 
 @app.route('/datastore/<hashkey>')
-def hash_lookup(hashkey):
+def get_data(hashkey):
     return datastore.get_value(hashkey)
 
 
@@ -14,7 +14,10 @@ def hash_lookup(hashkey):
 def insert_data():
     data = request.form['v']
     hashkey = datastore.set_value(data)
-    return redirect('/datastore/'+hashkey, code=302)
+    if hashkey is None:
+        return 'Failed to insert record'
+    else:
+        return redirect('/datastore/'+str(hashkey), code=302)
 
 
 if __name__ == '__main__':

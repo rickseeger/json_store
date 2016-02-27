@@ -2,7 +2,7 @@
 # simple key-value store. the value is saved in the local filesystem
 # using its sha256 hash as the filename.
 
-import sys, os, hashlib
+import traceback, sys, os, hashlib, json
 
 data_path = '/srv'
 
@@ -25,9 +25,19 @@ def get_value(hashkey):
     return value
         
 
-# write data using its hash as a key, returns the hash or None on failure
+# write data using its hash as a key, returns the hash or None on error
 def set_value(value):
 
+    # check JSON syntax
+    try:
+        tmp = json.loads(value)
+
+    except:
+        sys.stderr.write('error: invalid JSON string: {}'.format(str(value)))
+        return None
+
+
+    # save value using hash for fileaname
     hashkey = hashlib.sha256(value).hexdigest()
     path = data_path + '/' + hashkey
 
@@ -37,10 +47,11 @@ def set_value(value):
 
     except IOError as e:
         errinfo, traceback = sys.exc_info()
-        sys.stderr.write('error opening %s: %s' % (errinfo.filename, errinfo.strerror))
-        hashkey = None
+        sys.stderr.write('error: opening %s: %s' % (errinfo.filename, errinfo.strerror))
+        return None
     
     return hashkey
+
 
 
 if __name__ == '__main__':

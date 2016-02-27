@@ -27,9 +27,9 @@ class test_datastore(unittest.TestCase):
     
     def test_write_hash_returned(self):
 
-        value = "ItBit"
+        value = '{ "company" : "ItBit" }'
         hashkey = datastore.set_value(value)
-        self.assertEqual(hashkey, '0fedc5c0162c9dbe53ccb6aeb22ac953c9ced58644eed7ee5f9301bd5af492dd')
+        self.assertEqual(hashkey, '84aee9fb0137a38d6ef082bb210ea787f9e8d649ab699ad94acaa61d980e13e6')
 
     
 if __name__ == '__main__':
