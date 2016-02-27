@@ -1,6 +1,6 @@
 
-# simple key/value store. the value is saved in the local filesystem
-# using its sha256 hash as the key.
+# simple key-value store. the value is saved in the local filesystem
+# using its sha256 hash as the filename.
 
 import sys, os, hashlib
 
@@ -10,7 +10,7 @@ data_path = '/srv'
 # retrieve data by its hash value, returns None if hash not found
 def get_value(hashkey):
 
-    value = None
+    value = ''  # return on cache-miss
     path = data_path + '/' + hashkey
 
     if (os.path.isfile(path)):

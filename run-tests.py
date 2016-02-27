@@ -17,12 +17,12 @@ class test_datastore(unittest.TestCase):
         self.assertEqual(value, value2)
 
 
-    def test_cache_miss_returns_none(self):
+    def test_cache_miss_returns_empty_string(self):
 
         rand_value = str(random.random())
         rand_key = hashlib.sha256(rand_value).hexdigest()
         value = datastore.get_value(rand_key)
-        self.assertIsNone(value)
+        self.assertIsEqual('')
 
     
     def test_write_hash_returned(self):
