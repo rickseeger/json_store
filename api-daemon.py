@@ -15,7 +15,7 @@ def insert_data():
     data = request.form['v']
     hashkey = datastore.set_value(data)
     if hashkey is None:
-        return 'Failed to insert record'
+        return 'Couldn\'t insert JSON record\n'
     else:
         return redirect('/datastore/'+str(hashkey), code=302)
 
