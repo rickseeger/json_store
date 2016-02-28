@@ -46,7 +46,7 @@ def set_value(value):
 
     try:
         with open(path, 'w') as data_file:
-            data_file.write(value + '\n')
+            data_file.write(value)
 
     except IOError as e:
         errtype, errinfo, traceback = sys.exc_info()
