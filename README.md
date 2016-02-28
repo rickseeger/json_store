@@ -1,7 +1,20 @@
 # json_store
 Stores a JSON object as an HTTP reference to it's hash
 
-## Server
+## API
+
+### `GET /datastore/<key>`
+
+Read a value from the datastore by key. Returns an empty string if key doesn't exist.
+
+### `POST /datastore/set`
+
+Insert JSON value into the database. Key is derived as SHA-256(value). Parameters:
+
+> **v** : The value to insert into the key/value store. Must be valid JSON.
+
+
+## Running a datastore server
 
 ### Dependencies
 
@@ -12,7 +25,7 @@ Stores a JSON object as an HTTP reference to it's hash
 ![Server](images/server.png "Server")
 
 
-## Client
+## Using the datastore API
 
 ### Dependencies
 
